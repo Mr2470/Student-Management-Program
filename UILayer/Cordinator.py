@@ -8,6 +8,7 @@ class Cordinator:
 
         self.Frames = {}
         self.AddFrame("login", auth(self.window,self))
+        self.AddFrame("register", auth(self.window, self))
 
         self.window.show()
 
