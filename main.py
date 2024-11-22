@@ -1,3 +1,4 @@
-from UILayer.main_viewer import mainveiwer
+from UILayer.Cordinator import Cordinator
 
-x=mainveiwer()
+
+x = Cordinator()
