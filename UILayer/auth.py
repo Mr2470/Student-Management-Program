@@ -1,7 +1,7 @@
 from ttkbootstrap import Frame, Label, Entry, Button, END
 from tkinter import messagebox
 
-class login(Frame):
+class auth(Frame):
     def __init__(self, window, mainveiwer):
         super().__init__(window)
         self.mainveiw = mainveiwer
@@ -31,5 +31,8 @@ class login(Frame):
     def login(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
+
+        print(username)
+        print(password)
     def Register(self):
         self.mainveiw.switch("Register")

@@ -1,13 +1,13 @@
 from ttkbootstrap import Frame
 from .Window import window
-from .login import login
+from .auth import auth
 
 class Cordinator:
     def __init__(self):
         self.window = window()
 
         self.Frames = {}
-        self.AddFrame("login", login(self.window,self))
+        self.AddFrame("login", auth(self.window,self))
 
         self.window.show()
 
