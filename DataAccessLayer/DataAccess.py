@@ -7,13 +7,13 @@ class DataAccess:
         with sqlite3.connect("../database.db") as connection:
             cursor = connection.cursor()
             data = cursor.execute("""SELECT id,
-       Name,
-       Lname,
+       fName,
+       lName,
        username,
        password,
-       National_code,
+       NationalCode,
        Class
-  FROM Students
+  FROM Student
   where username = ?
   and password = ?;
 
