@@ -4,7 +4,7 @@ from CommonLayer.User import User
 class DataAccess:
     def get_user(self,username,password):
         print("getuser1")
-        with sqlite3.connect("C:/Users/Arta/Desktop/projects/project1/DataAccessLayer/database.db") as connection:
+        with sqlite3.connect("../database.db") as connection:
             cursor = connection.cursor()
             data = cursor.execute("""SELECT id,
        Name,
