@@ -7,5 +7,3 @@ class Login:
         print(username,password)
         UserDataAccess = DataAccess()
         user = UserDataAccess.get_user(username,password)
-arta = Login()
-print(arta.check_username_password("test","123123"))
