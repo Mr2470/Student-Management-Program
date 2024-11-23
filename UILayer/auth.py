@@ -1,6 +1,6 @@
 from ttkbootstrap import Frame, Label, Entry, Button, END
 from tkinter import messagebox
-from BusinessLayer.loginBusinessLayer import Login
+from DataAccessLayer.DataAccess import DataAccess
 
 
 class auth(Frame):
@@ -33,10 +33,17 @@ class auth(Frame):
     def login_button(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
-        authin = Login()
-        print(authin.check_username_password(username, password))
 
-        # print(f"{username=}\n{password=}")
+        print(f"{username=}\n{password=}")
+
+        student = DataAccess.get_student("database.db", username)
+        if student == None:
+            print("ERROR: Username Does Not Exist")
+        elif student[3] != password:
+            print("ERROR: Username or Password is Incorrect")
+        else:
+            print("Login Successfull")
+        
 
     def Register(self):
         self.mainveiw.switch("register")
@@ -79,9 +86,12 @@ class auth(Frame):
         self.Login_button.grid(row=5, column=1, pady=(0, 10), sticky="e", padx=(0, 20))
 
     def register_button(self):
-        fname = self.fname_entry.get()
-        lname = self.lname_entry.get()
+        fName = self.fname_entry.get()
+        lName = self.lname_entry.get()
         username = self.username_entry.get()
         password = self.password_entry.get()
 
-        print(f"{fname=}\n{lname=}\n{username=}\n{password=}")
+        print(f"{fName=}\n{lName=}\n{username=}\n{password=}")
+
+        DataAccess.insert_student("database.db", fName, lName, username, password)
+
