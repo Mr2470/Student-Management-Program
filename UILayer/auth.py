@@ -1,5 +1,7 @@
 from ttkbootstrap import Frame, Label, Entry, Button, END
 from tkinter import messagebox
+from BusinessLayer.loginBusinessLayer import Login
+
 
 class auth(Frame):
     def __init__(self, window, mainveiwer):
@@ -26,13 +28,15 @@ class auth(Frame):
         self.login_button.grid(row=3, column=1, pady=(0, 10), sticky="w")
 
         self.Register_button = Button(self, text="Register", command=self.Register)
-        self.Register_button.grid(row=3, column=1, pady=(0, 10), sticky="e",padx=(0, 20))
+        self.Register_button.grid(row=3, column=1, pady=(0, 10), sticky="e", padx=(0, 20))
 
     def login_button(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
+        authin = Login()
+        print(authin.check_username_password(username, password))
 
-        print(f"{username=}\n{password=}")
+        # print(f"{username=}\n{password=}")
 
     def Register(self):
         self.mainveiw.switch("register")
@@ -41,7 +45,6 @@ class auth(Frame):
 
         self.header = Label(self, text="Register Page")
         self.header.grid(row=0, column=1, pady=10, sticky="w")
-
 
         self.fname_label = Label(self, text="First Name")
         self.fname_label.grid(row=1, column=0, pady=(0, 10), padx=10, sticky="w")
@@ -73,7 +76,7 @@ class auth(Frame):
 
         # command needs to change
         self.Login_button = Button(self, text="Login", command=self.Register)
-        self.Login_button.grid(row=5, column=1, pady=(0, 10), sticky="e",padx=(0, 20))
+        self.Login_button.grid(row=5, column=1, pady=(0, 10), sticky="e", padx=(0, 20))
 
     def register_button(self):
         fname = self.fname_entry.get()
@@ -82,6 +85,3 @@ class auth(Frame):
         password = self.password_entry.get()
 
         print(f"{fname=}\n{lname=}\n{username=}\n{password=}")
-
-
-    
