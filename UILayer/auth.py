@@ -1,7 +1,7 @@
 from ttkbootstrap import Frame, Label, Entry, Button, END
 from tkinter import messagebox
 from DataAccessLayer.DataAccess import DataAccess
-
+from BusinessLayer.loginBusinessLayer import Login
 
 class auth(Frame):
     def __init__(self, window, mainveiwer):
@@ -35,15 +35,14 @@ class auth(Frame):
         password = self.password_entry.get()
 
         print(f"{username=}\n{password=}")
+        login_instance = Login()
+        try:
+            student = login_instance.check_username_password(username,password)
+        except:
+            messagebox.showerror(title="fuck you",message='incorect username and password')
 
-        student = DataAccess.get_student("database.db", username)
-        if student == None:
-            print("ERROR: Username Does Not Exist")
-        elif student[3] != password:
-            print("ERROR: Username or Password is Incorrect")
         else:
-            print("Login Successfull")
-        
+            print("welcome")
 
     def Register(self):
         self.mainveiw.switch("register")
@@ -93,5 +92,5 @@ class auth(Frame):
 
         print(f"{fName=}\n{lName=}\n{username=}\n{password=}")
 
-        DataAccess.insert_student("database.db", fName, lName, username, password)
+        # DataAccess.insert_student("database.db", fName, lName, username, password)
 

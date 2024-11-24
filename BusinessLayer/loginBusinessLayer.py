@@ -6,4 +6,4 @@ class Login:
     def check_username_password(self,username, password):
         print(username,password)
         UserDataAccess = DataAccess()
-        user = UserDataAccess.get_user(username,password)
+        user = UserDataAccess.get_student(username,password)
